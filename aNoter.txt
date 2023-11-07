@@ -1,0 +1,33 @@
+AMÉLIORATIONS
+----------------------------------------------------------------
+- include du menu
+- session du login (3h)
+- pattern singleton pour instance database
+
+
+AUTHENTIFICATION
+----------------------------------------------------------------
+login.php
+    - dans index, envoi des identifiants vers login
+    - dans login, vérification du login et des droits
+    - renvoi vers index
+    - dans index affichage en fonction des autorisations
+
+logout.php
+    - form ou lien <a> qui pointe sur logout.php ou on destroy la session du login
+
+session
+    - enregistrer l'utilisateur connecté dans une session pour éviter la demande demande de reconnexion sur une nouvelle page
+
+hacher les mdp
+    - hacher les mdp dans php ou en ligne et enregistrer les mdp hachés dans la bd
+
+actions autorisées
+    - si on tape une page non autorisée dans l'url, renvoi sur index avec le statut 403
+
+
+AUTRE
+----------------------------------------------------------------
+PDO DOCKER vs UWAMP
+    - DOCKER : utiliser le port 6033
+    - UWAMP : utiliser le port par défaut 3360

@@ -1,0 +1,15 @@
+INSERT INTO t_section (secName) VALUES ('Informatique'), ('Bois');
+INSERT INTO t_section (secName) VALUES ('Sécurité'), ('Marketing'), ('Couture');
+
+
+INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigine, fkSection) VALUES
+	('Salma', 'Abdulkadir', 'w', 'SAR', 'première lettre du prénom & première et dernière lettre du nom', '1'),
+    ('Anelisse', 'Corozel', 'w', 'Ané', 'petit nom', '1');
+
+INSERT INTO t_user (teaFirstname, teaName, teaGender, teaNickname, teaOrigine, fkSection) VALUES
+	('Salma', 'Abdulkadir', 'w', 'SAR', 'première lettre du prénom & première et dernière lettre du nom', '1'),
+    ('Anelisse', 'Corozel', 'w', 'Ané', 'petit nom', '1');
+
+INSERT INTO t_user (useLogin, usePassword, useAdministrator) VALUES
+	('Rosélia', 'Rosélia', '1'),
+    ('Tom', 'Tom', '0');
