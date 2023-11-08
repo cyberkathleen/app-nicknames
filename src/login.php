@@ -10,6 +10,8 @@
 
 include('Database.php');
 
+$session_start();
+
 // Création d'une instance de la classe Database
 $db = new Database();
 
@@ -20,10 +22,12 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 // Si le tableau 'users' n'est pas vide, cela signifie que l'utilisateur a bien été trouvé en BD
 if ($users) {
-    $isConnected = true;
+    $_SESSION["isConnected"] = true;
+    $_SESSION["user"] = $users[0];
 } else {
-    $isConnected = false;
+    $_SESSION["isConnected"] = false;
 }
 
+header("Location: index.php");
 
 ?>

@@ -16,10 +16,6 @@ $db = new Database();
 // Récupère la liste de tous les enseignants
 $teachers = $db->getAllTeachers();
 
-/* echo "<pre>";
-var_dump($teachers);
-echo "</pre>"; */
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
