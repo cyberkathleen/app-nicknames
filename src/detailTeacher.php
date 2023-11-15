@@ -65,6 +65,8 @@ $section = $db->getOneSection($teacher["fkSection"]);
                     <img style="margin-left: 1vw;" height="20em" <?=$gender;?>>
                 </h3>
                 <p><?=$section;?></p>
+                <!-- Affiche les icones d'options seulement si l'utilisateur est administrateur -->
+                <?php if ($_SESSION["user"]["useAdministrator"]): ?>
                 <div class="actions">
                     <a href="updateTeacher.php?idTeacher=<?=$teacher["idTeacher"];?>">
                         <img height="20em" src="./img/edit.png" alt="edit icon">
@@ -73,6 +75,7 @@ $section = $db->getOneSection($teacher["fkSection"]);
                         <img height="20em" src="./img/delete.png" alt="delete icon">
                     </a>
                 </div>
+                <?php endif; ?>
             </div>
             <div class="user-body">
                 <div class="left">

@@ -14,17 +14,16 @@ login.php
     - dans index affichage en fonction des autorisations - OK
 
 logout.php
-    - form ou lien <a> qui pointe sur logout.php ou on destroy la session du login
+    - form ou lien <a> qui pointe sur logout.php ou on destroy la session du login - OK
 
 session
     - enregistrer l'utilisateur connecté dans une session pour éviter la demande de reconnexion sur une nouvelle page - OK
-    - après connexion, renvoi sur la bonne page
 
 hacher les mdp
-    - hacher les mdp dans php ou en ligne et enregistrer les mdp hachés dans la bd
+    - hacher les mdp dans php ou en ligne et enregistrer les mdp hachés dans la bd - OK
 
 actions autorisées
-    - si on tape une page non autorisée dans l'url, renvoi sur index avec le statut 403
+    - si on tape une page non autorisée dans l'url, renvoi sur index avec le statut 403 - OK
 
 
 AUTRE

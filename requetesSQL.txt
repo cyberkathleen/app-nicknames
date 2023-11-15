@@ -11,3 +11,15 @@ INSERT INTO t_user (useLogin, usePassword, useAdministrator) VALUES
 	('Rosélia', 'Rosélia', '1'),
     ('Tom', 'Tom', '0'),
     ('Kath', 'Kath', '1');
+
+UPDATE t_user
+SET usePassword = '$2y$10$6T4.1xfZ/k1aJnoZ6d8bn.tbiJgAYmjsGzvIhbvciZEAX2XqqpfD6'
+WHERE useLogin = 'Rosélia';
+
+UPDATE t_user
+SET usePassword = '$2y$10$9XCdYlGHbgXvu27tZqr8kOahGrXVsyu/kO0yy8kVwNWKmcoZmxnlu'
+WHERE useLogin = 'Tom';
+
+UPDATE t_user
+SET usePassword = '$2y$10$oI.ODl9xLwJ9Pe.qcUx3WeSH5UsRotPSGVE496lVrLtez61jPVKi6'
+WHERE useLogin = 'Kath';

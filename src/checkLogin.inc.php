@@ -15,17 +15,15 @@ session_start();
 // Création d'une instance de la classe Database
 $db = new Database();
 
-// Récupère la liste des utilisateurs correspondants au login donné
+// Récupère l'utilisateur correspondant au nom d'utilisateur donné
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-    $users = $db->getLoggedInUser($_POST["username"], $_POST["password"]);
+    $user = $db->getOneUser($_POST["username"]);
 }
 
-// Si le tableau 'users' n'est pas vide, cela signifie que l'utilisateur a bien été trouvé en BD
-if ($users) {
+// Si le tableau 'user' n'est pas vide, cela signifie que l'utilisateur a bien été trouvé en BD. Si son mdp est correct, il sera connecté.
+if ($user && password_verify($_POST["password"], $user["usePassword"])) {
     $_SESSION["isConnected"] = true;
-    $_SESSION["user"] = $users[0];
-
-    
+    $_SESSION["user"] = $user;
 } else {
     $_SESSION["isConnected"] = false;
 }

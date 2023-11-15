@@ -164,34 +164,19 @@
     }
 
     /**
-     * Retourne la liste de tous les utilisateurs de la BD
+     * Retourne un utilisateur de la BD correspondants au nom d'utilisateur donné
      */
-    public function getAllUsers() {
-        // Récupère la liste de tous les utilisateurs de la BD
-        $query = 'SELECT * FROM t_user';
-        $queryResult =  $this->querySimpleExecute($query);
-
-        // Appelle la méthode pour avoir le résultat sous forme de tableau associatif
-        $users = $this->formatData($queryResult);
-
-        // Retourne tous les enseignants
-        return $users;
-    }
-
-    /**
-     * Retourne la liste des utilisateurs de la BD correspondants au login donné
-     */
-    public function getLoggedInUser($username, $password) {
+    public function getOneUser($username) {
         // Récupère les informations pour un utilisateur
-        $query = 'SELECT * FROM t_user WHERE useLogin = :username AND usePassword = :usePassword';
-        $binds = array(':username' => $username, ':usePassword' => $password);
+        $query = 'SELECT * FROM t_user WHERE useLogin = :username';
+        $binds = array(':username' => $username);
         $queryResult = $this->queryPrepareExecute($query, $binds);
 
         // Appelle la méthode pour avoir le résultat sous forme de tableau associatif
         $user = $this->formatData($queryResult);
 
         // Retourne l'utilisateur
-        return $user;
+        return $user[0];
     }
 }
 ?>

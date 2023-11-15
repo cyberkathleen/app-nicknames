@@ -9,8 +9,12 @@
  */
 
 include('Database.php');
+include('helper.php');
 
 session_start();
+
+// Vérifie si l'utilisateur a accès à cette page
+IsUserAllowed();
 
 // Création d'une instance de la classe Database
 $db = new Database();
