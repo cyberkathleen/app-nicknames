@@ -9,4 +9,5 @@ INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigine
 
 INSERT INTO t_user (useLogin, usePassword, useAdministrator) VALUES
 	('Rosélia', 'Rosélia', '1'),
-    ('Tom', 'Tom', '0');
+    ('Tom', 'Tom', '0'),
+    ('Kath', 'Kath', '1');

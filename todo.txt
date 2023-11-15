@@ -1,6 +1,6 @@
 AMÉLIORATIONS
 ----------------------------------------------------------------
-- include du menu
+- include du menu - OK
 - session du login (3h)
 - pattern singleton pour instance database
 
@@ -8,16 +8,17 @@ AMÉLIORATIONS
 AUTHENTIFICATION
 ----------------------------------------------------------------
 login.php
-    - dans index, envoi des identifiants vers login
-    - dans login, vérification du login et des droits
-    - renvoi vers index
-    - dans index affichage en fonction des autorisations
+    - dans index, envoi des identifiants vers login - OK
+    - dans login, vérification du login et des droits - OK
+    - renvoi vers index - OK
+    - dans index affichage en fonction des autorisations - OK
 
 logout.php
     - form ou lien <a> qui pointe sur logout.php ou on destroy la session du login
 
 session
-    - enregistrer l'utilisateur connecté dans une session pour éviter la demande demande de reconnexion sur une nouvelle page
+    - enregistrer l'utilisateur connecté dans une session pour éviter la demande de reconnexion sur une nouvelle page - OK
+    - après connexion, renvoi sur la bonne page
 
 hacher les mdp
     - hacher les mdp dans php ou en ligne et enregistrer les mdp hachés dans la bd

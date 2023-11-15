@@ -49,15 +49,9 @@ $userData = array(
                 <div class="titre-header">
                     <h1>Surnom des enseignants</h1>
                 </div>
-                <div class="login-container">
-                    <form action="#" method="post">
-                        <label for="user"> </label>
-                        <input type="text" name="user" id="user" placeholder="Login">
-                        <label for="password"> </label>
-                        <input type="password" name="password" id="password" placeholder="Mot de passe">
-                        <button type="submit" class="btn btn-login">Se connecter</button>
-                    </form>
-                </div>
+                <?php
+                include("parts/login.inc.php");
+                ?>
             </div>
             <?php
             include('parts/menu.inc.php');

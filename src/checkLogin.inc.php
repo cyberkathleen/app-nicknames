@@ -10,7 +10,7 @@
 
 include('Database.php');
 
-$session_start();
+session_start();
 
 // Création d'une instance de la classe Database
 $db = new Database();
@@ -24,6 +24,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 if ($users) {
     $_SESSION["isConnected"] = true;
     $_SESSION["user"] = $users[0];
+
+    
 } else {
     $_SESSION["isConnected"] = false;
 }

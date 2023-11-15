@@ -183,7 +183,7 @@
      */
     public function getLoggedInUser($username, $password) {
         // Récupère les informations pour un utilisateur
-        $query = 'SELECT * FROM t_teacher WHERE useLogin = :username AND usePassword = :usePassword';
+        $query = 'SELECT * FROM t_user WHERE useLogin = :username AND usePassword = :usePassword';
         $binds = array(':username' => $username, ':usePassword' => $password);
         $queryResult = $this->queryPrepareExecute($query, $binds);
 

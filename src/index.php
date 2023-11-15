@@ -10,11 +10,28 @@
 
 include('Database.php');
 
+session_start();
+//session_destroy();
+
 // Création d'une instance de la classe Database
 $db = new Database();
 
 // Récupère la liste de tous les enseignants
 $teachers = $db->getAllTeachers();
+
+// Au départ, aucun utilisateur n'est connecté
+if (!isset($_SESSION["isConnected"])) {
+    $_SESSION["isConnected"] = false;
+}
+
+// Pour afficher si l'utilisateur est "admin" ou "user"
+if (isset($_SESSION["user"])) {
+    if ($_SESSION["user"]["useAdministrator"] == true) {  
+        $_SESSION["userStatus"] = "admin";
+    } else {
+        $_SESSION["userStatus"] = "user";
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,15 +50,9 @@ $teachers = $db->getAllTeachers();
                 <div class="titre-header">
                     <h1>Surnom des enseignants</h1>
                 </div>
-                <div class="login-container">
-                    <form action="login.php" method="post">
-                        <label for="username"></label>
-                        <input type="text" name="username" id="username" placeholder="Login">
-                        <label for="password"></label>
-                        <input type="password" name="password" id="password" placeholder="Mot de passe">
-                        <button type="submit" class="btn btn-login">Se connecter</button>
-                    </form>
-                </div>
+                <?php
+                include("parts/login.inc.php");
+                ?>
             </div>
             <?php
             include('parts/menu.inc.php');
@@ -56,7 +67,10 @@ $teachers = $db->getAllTeachers();
                         <tr>
                             <th>Nom</th>
                             <th>Surnom</th>
+                            <!-- Affiche seulement si un utilisateur est connecté -->
+                            <?php if ($_SESSION["isConnected"]): ?>
                             <th>Options</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,19 +88,27 @@ $teachers = $db->getAllTeachers();
                             // Affiche le surnom
                             $html .= "<td>" . $teacher["teaNickname"] . "</td>";
 
-                            // Affiche les icones d'options
-                            $html .= "
-                            <td class='containerOptions'>
-                                <a href='updateTeacher.php?idTeacher=" . $teacher["idTeacher"] . "'>
-                                    <img height='20em' src='img/edit.png' alt='edit'>
-                                </a>
-                                <a href='javascript:confirmDelete(" . $teacher["idTeacher"] . ")'>
-                                    <img height='20em' src='img/delete.png' alt='delete'>
-                                </a>
-                                <a href='detailTeacher.php?idTeacher=" . $teacher["idTeacher"] . "'>
-                                    <img height='20em' src='img/detail.png' alt='detail'>
-                                </a>
-                            </td>";
+                            // Affiche les icones d'options si un utilisateur est connecté
+                            if ($_SESSION["isConnected"]) {
+                                $html .= "<td class='containerOptions'>";
+
+                                // Affiche les options de modification et de suppression si l'utilisateur est un administrateur
+                                if ($_SESSION["user"]["useAdministrator"]) {
+                                    $html .= "
+                                        <a href='updateTeacher.php?idTeacher=" . $teacher["idTeacher"] . "'>
+                                            <img height='20em' src='img/edit.png' alt='edit'>
+                                        </a>
+                                        <a href='javascript:confirmDelete(" . $teacher["idTeacher"] . ")'>
+                                            <img height='20em' src='img/delete.png' alt='delete'>
+                                        </a>";
+                                }
+
+                                $html .= "
+                                    <a href='detailTeacher.php?idTeacher=" . $teacher["idTeacher"] . "'>
+                                        <img height='20em' src='img/detail.png' alt='detail'>
+                                    </a>
+                                </td>";
+                            }
 
                             $html .= "</tr>";
                         }
